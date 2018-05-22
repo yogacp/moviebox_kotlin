@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.jualo.moviebox.R
-import org.jetbrains.anko.toast
+import com.jualo.moviebox.ui.activity.home.HomeActivity
 
 class SplashScreenActivity: AppCompatActivity() {
     val LOG_TAG = "SplashScreen"
@@ -20,7 +20,9 @@ class SplashScreenActivity: AppCompatActivity() {
     fun runSplashScreen(timeout: Long) {
         Handler().postDelayed({
             kotlin.run {
-                toast("Redirect to homepage")
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }, timeout)
     }

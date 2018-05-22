@@ -3,6 +3,7 @@ package com.jualo.moviebox.repository
 import com.jualo.moviebox.BuildConfig
 import com.jualo.moviebox.api.NetworkServices
 import com.jualo.moviebox.api.responses.BaseApiResponse
+import com.jualo.moviebox.vo.api.DetailsMovie
 import com.jualo.moviebox.vo.api.Result
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,6 +17,15 @@ class MovieBoxRepository @Inject constructor(var mNetworkServices: NetworkServic
      */
     fun getPopularMovies(page: String): Flowable<BaseApiResponse<Result>> {
         return mNetworkServices.getPopularMovies(page, BuildConfig.MOVIEDB_APIKEY)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    /**
+     * Get Details Movies
+     */
+    fun getDetailsMovies(id: String): Flowable<DetailsMovie> {
+        return mNetworkServices.getDetailsMovie(id, BuildConfig.MOVIEDB_APIKEY)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
     }

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Jualo Moviebox</string>
+
+    <!-- Empty List -->
+    <string name="empty_list_title">List empty</string>
+    <string name="empty_list_content">No list available</string>
+
+    <!-- Error Connection -->
+    <string name="error_connection_title">Sorry, there was an error displaying the data</string>
+    <string name="error_connection_content">Not Connected to Internet</string>
+
+    <string name="close">Close</string>
+
 </resources>

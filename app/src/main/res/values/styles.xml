@@ -17,12 +17,12 @@
 
     <style name="AppTheme.TransNav" parent="AppTheme" />
 
-    <style name="RandomUserDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="MovieBoxDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColorPrimary">@color/bp_black_cc</item>
         <item name="android:background">@color/defaultWhite</item>
     </style>
 
-    <style name="LayoutRandomUserCardview">
+    <style name="LayoutMovieBoxCardview">
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginBottom">17dp</item>

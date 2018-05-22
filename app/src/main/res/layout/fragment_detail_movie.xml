@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/detailMovieTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded"
+        tools:text="Movie Title" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Release Date"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/detailMovieTitle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/detailMovieReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="2018" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Rate"
+        android:textSize="18sp"
+        android:textStyle="bold"
+
+        app:layout_constraintTop_toBottomOf="@+id/detailMovieReleaseDate" />
+
+    <TextView
+        android:id="@+id/detailMovieCountAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="7.9 / 10" />
+
+    <TextView
+        android:id="@+id/detailMovieGenreTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Genres"
+        app:layout_constraintTop_toBottomOf="@+id/detailMovieCountAverage"
+        tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/detailMovieGenre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/detailMovieGenreTitle"
+        tools:ignore="RtlHardcoded"
+        tools:text="Movie Genre" />
+
+    <TextView
+        android:id="@+id/overview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Overview"
+        app:layout_constraintTop_toBottomOf="@+id/detailMovieGenre"
+        tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/detailMovieDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/overview"
+        tools:ignore="RtlHardcoded"
+        tools:text="Movie Description" />
+
+</android.support.constraint.ConstraintLayout>

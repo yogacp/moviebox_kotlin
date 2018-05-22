@@ -11,16 +11,13 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector {
+abstract class BaseActivity: AppCompatActivity() {
 
     @Inject
     lateinit var mHelper: Helper
 
     @Inject
     lateinit var mActivityNavigation: ActivityNavigation
-
-    @Inject
-    lateinit var mFragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     /**
      * This function replace onCreate as main function run in activity
@@ -44,7 +41,4 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector {
         onActivityReady(savedInstanceState)
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
-        return mFragmentDispatchingAndroidInjector
-    }
 }
