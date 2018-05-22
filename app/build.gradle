@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def keystorePropertiesFile = rootProject.file("moviedb.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 27
@@ -13,21 +16,83 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            useProguard true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'MOVIEDB_APIKEY', keystoreProperties['MOVIEDB_APIKEY']
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Android runner and rules support
+    androidTestImplementation(androidRunner) {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation(androidRules) {
+        exclude module: 'support-annotations'
+    }
+
+    // Espresso support
+    androidTestImplementation(espressoDependencies.espressoCore) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    //Support Dependencies
+    implementation supportDependencies.appcompatv7
+    implementation supportDependencies.design
+    implementation supportDependencies.supportv4
+    implementation supportDependencies.recycleview
+    implementation supportDependencies.cardview
+    implementation supportDependencies.contraintLayout
+    implementation supportDependencies.multidex
+
+    //RxJava 2
+    implementation rxDependencies.rxJava
+    implementation rxDependencies.rxAndroid
+
+    //Retrofit Dependencies
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.rxAdapterJava
+
+    //Okhttp Dependencies
+    implementation okhttpDependencies.okhttp
+    implementation okhttpDependencies.loggingInterceptor
+
+    //Dagger Dependencies
+    implementation daggerDependencies.dagger
+    implementation daggerDependencies.daggerAndroidSupport
+    kapt daggerDependencies.daggerCompiler
+    kapt daggerDependencies.daggerAndroidProcessor
+
+    //Loading Indicator View
+    implementation aviLoadingIndicator
+
+    //Anko Layout
+    implementation ankoLayoutDependencies.ankoLayout
+
+    //Image Loader
+    implementation picasso
 }
