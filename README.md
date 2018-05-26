@@ -1,2 +1,2 @@
 # moviebox_kotlin
-Listing movie box from https://www.themoviedb.org using Kotlin and MVP
+Android Application build with Kotlin and MVP concept, that displays the list of popular movies and display the detail of movie by consuming The Movie DB Web API. https://www.themoviedb.org
